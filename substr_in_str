@@ -1,0 +1,23 @@
+#!/bin/bash
+IFS=', ' read -r -a array <<< "$(cat 5r3_input)"
+echo "#5r3_done" > 5r3_done
+
+for element in "${array[@]}"
+do
+    echo "$element" >> 5r3_done
+done
+
+cat 5r3_done | rev | sort > 5r3_rev
+
+
+w="$(cat word_list)"
+echo $w
+echo "---"
+
+for e in "${w[@]}"
+do
+    if [[ $all == *"$e"* ]]; then
+        echo "Found : $e"
+    fi
+done
+echo "done!!"

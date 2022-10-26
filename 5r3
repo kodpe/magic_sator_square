@@ -1,0 +1,29 @@
+#!/bin/bash
+IFS=', ' read -r -a array <<< "$(cat 5r3_input)"
+echo "#5r3_done" > 5r3_done
+
+for element in "${array[@]}"
+do
+    echo "$element" >> 5r3_done
+done
+
+cat 5r3_done | rev | sort > 5r3_rev
+
+
+all="$(cat 5r3_rev)"
+echo $all
+echo
+echo "---"
+
+# exit
+echo "#5r3_solutions" > 5r3_solutions
+
+for element in "${array[@]}"
+do
+    if [[ $all == *"$element"* ]]; then
+        echo "It's there : $element"
+        echo $element >> 5r3_solutions
+    fi
+done
+
+echo "done!!"
